@@ -4,11 +4,11 @@ from bson.objectid import ObjectId
 class AnimalShelter(object):
     """ CRUD operations for Animal collection in MongoDB """
 
-    def __init__(self, username, password, port):
+    def __init__(self, username, password):
         # Initializing the MongoClient. This helps to 
         # access the MongoDB databases and collections.
         try:
-            self.client = MongoClient('mongodb://%s:%s@127.0.0.1:%s/AAC?authSource=AAC' % (username, password, port))
+            self.client = MongoClient('mongodb://%s:%s@127.0.0.1:47725/?authSource=AAC' % (username, password))
             #self.client = MongoClient('127.0.0.1',
             #                username=username,
             #                password=password,
