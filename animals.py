@@ -8,7 +8,13 @@ class AnimalShelter(object):
         # Initializing the MongoClient. This helps to 
         # access the MongoDB databases and collections.
         try:
-            self.client = MongoClient('mongodb://%s:%s@localhost:%s/?authSource=AAC' % (username, password, port))
+            #self.client = MongoClient('mongodb://%s:%s@localhost:%s/?authSource=AAC' % (username, password, port))
+            self.client = MongoClient('127.0.0.1',
+                     username=username,
+                     password=password,
+                     authSource='AAC',
+                     authMechanism='SCRAM-SHA-256',
+                     port=port)
             #self.client.server_info()  # Immediately try to access the server to validate the conn settings
         except errors.ConnectionFailure as e:
             print(e)  # Print the error message for further context on connection failure
