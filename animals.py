@@ -12,9 +12,10 @@ class AnimalShelter(object):
             self.client.server_info()  # Immediately try to access the server to validate the conn settings
         except errors.ConnectionFailure as e:
             print(e)  # Print the error message for further context on connection failure
-        
+        print("Connected to server!")
         # where xxxx is your unique port number
         self.database = self.client['AAC']
+        print("Connected to database!")
 
 # Complete this create method to implement the C in CRUD.
     def create(self, data):
