@@ -27,7 +27,10 @@ class AnimalShelter(object):
     def create(self, data):
         if data is not None:
             if type(data) is dict:
-                return self.database.animals.insert(data)  # data should be dictionary  
+                if self.database.animals.insert(data):  # data should be dictionary
+                    return True
+                else:
+                    return False 
             else:
                 raise Exception("Data to be created must be in dictionary format!")          
         else:
@@ -42,3 +45,23 @@ class AnimalShelter(object):
                 raise Exception("Search data type must be a dictionary!")          
         else:
             raise Exception("Nothing to read, because search parameter is empty")
+        
+# Create method to implement the U in CRUD 
+    def update(self, match, data):
+        if match is not None and data is not None:
+            if type(match) is dict and type(data) is dict:
+                return self.database.animals.update(match,data)  # data should be a dictionary which represents the search terms  
+            else:
+                raise Exception("Search and update data must be of type dictionary!")          
+        else:
+            raise Exception("Match term and update term need to be supplied!")
+
+# Create method to implement the D in CRUD 
+    def delete(self, match):
+        if match is not None:
+            if type(match) is dict:
+                return self.database.animals.delete(match)  # data should be a dictionary which represents the search terms  
+            else:
+                raise Exception("Search data type must be a dictionary!")          
+        else:
+            raise Exception("Nothing to delete, because search parameter is empty")
