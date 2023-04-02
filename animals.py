@@ -60,7 +60,7 @@ class AnimalShelter(object):
     def delete(self, match):
         if match is not None:
             if type(match) is dict:
-                return self.database.animals.delete(match)  # data should be a dictionary which represents the search terms  
+                return self.database.animals.remove(match)  # data should be a dictionary which represents the search terms  
             else:
                 raise Exception("Search data type must be a dictionary!")          
         else:
