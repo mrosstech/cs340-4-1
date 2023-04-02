@@ -45,7 +45,17 @@ class AnimalShelter(object):
                 raise Exception("Search data type must be a dictionary!")          
         else:
             raise Exception("Nothing to read, because search parameter is empty")
-        
+
+# Create method to implement the R in CRUD but only for one entry 
+    def readone(self, search):
+        if search is not None:
+            if type(search) is dict:
+                return self.database.animals.find_one(search)  # data should be a dictionary which represents the search terms  
+            else:
+                raise Exception("Search data type must be a dictionary!")          
+        else:
+            raise Exception("Nothing to read, because search parameter is empty")
+   
 # Create method to implement the U in CRUD 
     def update(self, match, data):
         if match is not None and data is not None:
