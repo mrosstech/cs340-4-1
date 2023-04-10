@@ -40,7 +40,7 @@ class AnimalShelter(object):
     def read(self, search):
         if search is not None:
             if type(search) is dict:
-                return self.database.animals.find(search)  # data should be a dictionary which represents the search terms  
+                return self.database.animals.find(search, {"_id":False})  # data should be a dictionary which represents the search terms  
             else:
                 raise Exception("Search data type must be a dictionary!")          
         else:
